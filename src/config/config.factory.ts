@@ -20,6 +20,14 @@ export default [
           database: process.env.MYSQL_DATABASE
         },
         pool: { min: 0, max: 5 }
+      },
+      valkey: {
+        socket: process.env.VALKEY_SOCKET,
+        host: process.env.VALKEY_HOST,
+        port: process.env.VALKEY_PORT,
+        username: process.env.VALKEY_USER,
+        password: process.env.VALKEY_PASSWORD,
+        db: process.env.VALKEY_DATABASE
       }
     };
   })
