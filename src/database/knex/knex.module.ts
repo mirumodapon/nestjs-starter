@@ -1,9 +1,9 @@
 import { Global, Module } from '@nestjs/common';
-import { Knex } from './knex';
+import { KnexProvider } from './knex.provider';
 
 @Global()
 @Module({
-  providers: [Knex],
-  exports: [Knex]
+  providers: [KnexProvider],
+  exports: [KnexProvider]
 })
 export class KnexModule {}

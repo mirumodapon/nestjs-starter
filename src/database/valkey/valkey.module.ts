@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { Valkey } from './valkey';
+import { ValkeyProvider } from './valkey.provider';
 
 @Module({
-  providers: [Valkey],
-  exports: [Valkey]
+  providers: [ValkeyProvider],
+  exports: [ValkeyProvider]
 })
 export class ValkeyModule {}
