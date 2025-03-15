@@ -1,0 +1,19 @@
+import type { Knex } from 'knex';
+import { config as dotenv } from 'dotenv';
+
+dotenv({ path: ['.env.local', '.env'] });
+
+const config: { [key: string]: Knex.Config } = {
+  development: {
+    client: 'mysql2',
+    connection: {
+      host: process.env.MYSQL_HOST,
+      port: +process.env.MYSQL_PORT,
+      user: process.env.MYSQL_USER,
+      password: process.env.MYSQL_PASSWORD,
+      database: process.env.MYSQL_DATABASE
+    }
+  }
+};
+
+module.exports = config;
