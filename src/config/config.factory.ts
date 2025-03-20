@@ -4,7 +4,17 @@ export default [
   registerAs('app', () => {
     return {
       port: process.env.PORT || 3000,
-      version: process.env.npm_package_version
+      version: process.env.npm_package_version,
+
+      session: {
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+          secure: false,
+          maxAge: 24 * 60 * 60 * 1000
+        }
+      }
     };
   }),
   registerAs('database', () => {
@@ -29,6 +39,14 @@ export default [
         password: process.env.VALKEY_PASSWORD,
         db: process.env.VALKEY_DATABASE
       }
+    };
+  }),
+  registerAs('google-oauth', () => {
+    return {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: process.env.GOOGLE_CALLBACK_URL,
+      scope: process.env.GOOGLE_OAUTH_SCOPE.split(',')
     };
   })
 ];

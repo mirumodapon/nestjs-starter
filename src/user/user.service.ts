@@ -11,6 +11,10 @@ export class UserService {
     return this.knex('user').select('*').where({ id });
   }
 
+  getUserByEmail(email: string) {
+    return this.knex('user').select('*').where({ email }).first();
+  }
+
   listUser(payload: ListUserDto) {
     const sql = this.knex('user')
       .select(['id', 'email', 'name'])
