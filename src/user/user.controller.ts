@@ -9,8 +9,8 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get(':id')
-  getUser(@Param('id', ParseIntPipe) id: number) {
-    return this.userService.getUser(id);
+  getUserById(@Param('id', ParseIntPipe) id: number) {
+    return this.userService.getUserById(id);
   }
 
   @Get()

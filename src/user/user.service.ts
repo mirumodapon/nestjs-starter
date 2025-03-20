@@ -7,8 +7,8 @@ import { CreateUserDto, ListUserDto, UpdateUserDto } from './dto';
 export class UserService {
   constructor(@Inject(KNEX_PROVIDER) private readonly knex: Knex) {}
 
-  getUser(id: number) {
-    return this.knex('user').select('*').where({ id });
+  getUserById(id: number) {
+    return this.knex('user').select('*').where({ id }).first();
   }
 
   getUserByEmail(email: string) {
@@ -31,7 +31,7 @@ export class UserService {
 
   async createUser(user: CreateUserDto) {
     const [id] = await this.knex('user').insert(user);
-    return this.getUser(id);
+    return this.getUserById(id);
   }
 
   updateUser(id: number, payload: UpdateUserDto) {
