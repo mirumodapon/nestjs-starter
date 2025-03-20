@@ -1,8 +1,10 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query, UseFilters } from '@nestjs/common';
 import { CreateUserDto, ListUserDto, UpdateUserDto } from './dto';
+import { UserException } from './user.exception';
 import { UserService } from './user.service';
 
 @Controller('user')
+@UseFilters(UserException)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
